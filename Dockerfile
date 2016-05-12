@@ -1,4 +1,4 @@
-# docker-twitter-card 2016-05-10 18:57:12 -0400
+# docker-twitter-card 2016-05-11 21:36:45 -0400
 FROM phusion/baseimage:0.9.18
 MAINTAINER jrruethe@gmail.com
 
@@ -45,9 +45,9 @@ RUN `# Updating Package List`                                                   
      && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1   \
      && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt &&       \
                                                                                              \
-     ln -s /root/optipng /usr/bin/optipng                                           &&       \
      npm install -g webshot-cli                                                     &&       \
      ln -s /usr/bin/nodejs /usr/bin/node                                            &&       \
+     ln -s /root/optipng /usr/bin/optipng                                           &&       \
                                                                                              \
     `# Removing build dependencies`                                                 &&       \
      DEBIAN_FRONTEND=noninteractive apt-get purge -y                                         \
