@@ -2,13 +2,14 @@
 
 set -e
 
-if [ "$#" -ne 2 ]; then
-   echo "Usage: card.sh <type> <description>"
+if [ "$#" -lt 2 ]; then
+   echo "Usage: card.sh <type> <description> [theme]"
    exit 1
 fi
 
 TYPE=$1
 DESCRIPTION=$2
+THEME=$3
 
 urlencode() {
   local length="${#1}"
@@ -21,11 +22,16 @@ urlencode() {
   done
 }
 
+if [ -z $THEME ]; then
+   themes=("water" "ocean" "sea" "lake" "mountains" "forest" "storm" "sky" "night" "moon")
+   THEME=${themes[$RANDOM % ${#themes[@]} ]}
+fi
+
 TITLE=$(urlencode "${DESCRIPTION}")
 AVATAR=$(urlencode "http://jrruethe.github.io/blog/twitter-card/avatar.png")
 TWITTER=$(urlencode "@jrruethe")
 STICKER=$(urlencode "stickers/${TYPE}.png")
-BACKGROUND=$(urlencode "#ccc url(https://source.unsplash.com/featured/1200x630/?water) top left no-repeat")
+BACKGROUND=$(urlencode "#ccc url(https://source.unsplash.com/featured/1200x630/?${THEME}) top left no-repeat")
 
 URL="http://jrruethe.github.io/blog/twitter-card/index.html?title=$TITLE&avatar=$AVATAR&twitter=$TWITTER&sticker=$STICKER&background=$BACKGROUND"
 
