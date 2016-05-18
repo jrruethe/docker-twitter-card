@@ -23,7 +23,7 @@ urlencode() {
 }
 
 if [ -z $THEME ]; then
-   themes=("water" "ocean" "sea" "lake" "mountains" "forest" "storm" "sky" "night" "moon")
+   themes=("water" "ocean" "sea" "lake" "mountains" "forest" "storm" "sky" "night" "moon" "snow" "rocks" "stones" "pebbles" "river" "clouds")
    THEME=${themes[$RANDOM % ${#themes[@]} ]}
 fi
 
